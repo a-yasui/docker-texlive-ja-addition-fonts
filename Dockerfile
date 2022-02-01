@@ -2,7 +2,7 @@
 # https://opensource.org/licenses/MIT
 #
 
-FROM --platform=$BUILDPLATFORM debian:10
+FROM --platform=$BUILDPLATFORM debian:stable
 
 MAINTAINER a-yasui
 

@@ -9,8 +9,8 @@ Forked from umireon/docker-texci (under the MIT License) And https://github.com/
 # Usage
 
 ```shell
-$ docker pull atyasu/alpine-texlive-ja-addition-fonts:year-2020
-$ docker run --rm -it -v $PWD:/workdir atyasu/alpine-texlive-ja-addition-fonts lualatex
+$ docker pull atyasu/docker-texlive-ja-addition-fonts:latest
+$ docker run --rm -it -v $PWD:/workdir atyasu/docker-texlive-ja-addition-fonts lualatex
 ```
 
 # Font

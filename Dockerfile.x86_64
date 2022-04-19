@@ -2,7 +2,7 @@
 # https://opensource.org/licenses/MIT
 #
 
-FROM alpine:3.13
+FROM --platform=linux/amd64 debian:10
 
 MAINTAINER a-yasui
 
@@ -19,9 +19,13 @@ WORKDIR /workdir
 ### install-tl-unx.tar.gz : http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
 ### Repository : http://mirror.ctan.org/systems/texlive/tlnet
 
-RUN apk --no-cache add perl wget xz tar fontconfig-dev freetype-dev
+RUN apt-get update \
+  && apt-get install -y perl wget xz-utils tar fontconfig libfreetype6 unzip\
+  && apt-get -y clean \
+  && rm -rf /var/lib/apt/lists/*
+
 RUN mkdir /tmp/install-tl-unx && \
-    wget -qO - http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz | \
+    wget -qO - http://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2020/tlnet-final/install-tl-unx.tar.gz | \
     tar -xz -C /tmp/install-tl-unx --strip-components=1 && \
     printf "%s\n" \
       "selected_scheme scheme-basic" \
@@ -38,14 +42,13 @@ RUN mkdir /tmp/install-tl-unx && \
     /tmp/install-tl-unx/install-tl \
       --no-gui \
       --profile=/tmp/install-tl-unx/texlive.profile \
-      --repository http://mirror.ctan.org/systems/texlive/tlnet/ && \
+      --repository http://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2020/tlnet-final/ && \
     tlmgr install \
       collection-basic collection-latex \
       collection-latexrecommended collection-latexextra \
       collection-fontsrecommended collection-langjapanese \
       collection-luatex latexmk && \
-    rm -fr /tmp/install-tl-unx && \
-    apk --no-cache del xz tar
+    rm -fr /tmp/install-tl-unx
 
 COPY Hack-v3.003-ttf.zip .
 RUN unzip Hack-v3.003-ttf.zip && \
@@ -58,7 +61,7 @@ RUN unzip IPAexfont00401.zip && \
   cp -R IPAexfont00401 /usr/share/fonts/IPA && \
   rm -rf IPAexfont00401.zip IPAexfont00401
 
-RUN apk --no-cache del wget
+RUN apt remove -y wget unzip
 
 ## Make Font Caches
 RUN fc-cache -fv && mktexlsr && luaotfload-tool -v -vvv -u

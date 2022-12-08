@@ -8,7 +8,7 @@ ARG BUILDPLATFORM
 
 MAINTAINER a-yasui
 
-ENV PATH /usr/local/texlive/2022/bin/x86_64-linux:/usr/local/texlive/2022/bin/aarch64-linux:$PATH
+ENV PATH /usr/local/texlive/2021/bin/x86_64-linux:/usr/local/texlive/2021/bin/aarch64-linux:$PATH
 ENV LANG=C.UTF-8
 
 WORKDIR /workdir
@@ -30,12 +30,12 @@ RUN chmod +x /tmp/mkcompile.sh \
 RUN apt update \
   && apt install -y perl wget xz-utils tar fontconfig libfreetype6 unzip \
   && apt clean -y \
-  && wget -qO - http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz | \
+  && wget -qO - http://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2021/tlnet-final/install-tl-unx.tar.gz | \
     tar -xz -C /tmp/install-tl-unx --strip-components=1 \
   && /tmp/install-tl-unx/install-tl \
       --no-gui \
       --profile=/tmp/install-tl-unx/texlive.profile \
-      --repository http://mirror.ctan.org/systems/texlive/tlnet/ \
+      --repository http://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2021/tlnet-final/ \
   && tlmgr install \
       collection-basic collection-latex \
       collection-latexrecommended collection-latexextra \

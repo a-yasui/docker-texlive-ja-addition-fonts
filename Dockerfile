@@ -59,7 +59,7 @@ RUN unzip IPAexfont00401.zip \
   && rm -rf IPAexfont00401.zip IPAexfont00401
 
 ## Make Font Caches
-RUN fc-cache -fv && mktexlsr && luaotfload-tool -v -vvv -u
+RUN fc-cache -fv && mktexlsr && luaotfload-tool -v -vvv -u && kanji-config-updmap-sys --jis2004 haranoaji
 RUN apt remove -y unzip && apt clean -y && rm -rf /var/lib/apt/lists/*
 
 CMD ["sh"]

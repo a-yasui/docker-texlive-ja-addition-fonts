@@ -1,10 +1,11 @@
 # a-yasui/docker-texlive-ja-addition-fonts
 
-Minimal LuaLaTeX Live image for Japanese based on debian.
+LuaLaTeX Live image for Japanese based on debian.
 
 Forked from umireon/docker-texci (under the MIT License) And https://github.com/a-yasui/docker-alpine-texlive-ja-addition-fonts (under the MIT License)
 
 [![dockeri.co](https://dockeri.co/image/atyasu/docker-texlive-ja-addition-fonts)](https://hub.docker.com/r/atyasu/docker-texlive-ja-addition-fonts)
+
 
 # Usage
 
@@ -13,10 +14,16 @@ $ docker pull atyasu/docker-texlive-ja-addition-fonts:latest
 $ docker run --rm -it -v $PWD:/workdir atyasu/docker-texlive-ja-addition-fonts lualatex
 ```
 
+## Yearly
+
+- 2021 : docker pull atyasu/docker-texlive-ja-addition-fonts:year-2021
+- 2020 : docker pull atyasu/docker-texlive-ja-addition-fonts:year-2020
+
 # Font
 
-IPA : https://moji.or.jp/ipafont/
-Hack : https://sourcefoundry.org/hack/
+- 原ノ味フォント：https://github.com/trueroad/HaranoAjiFonts 
+- IPA : https://moji.or.jp/ipafont/
+- Hack : https://sourcefoundry.org/hack/
 
 # Samples
 

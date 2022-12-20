@@ -15,6 +15,7 @@ $ docker run --rm -it -v $PWD:/workdir atyasu/docker-texlive-ja-addition-fonts l
 
 # Font
 
+原ノ味フォント：https://github.com/trueroad/HaranoAjiFonts
 IPA : https://moji.or.jp/ipafont/
 Hack : https://sourcefoundry.org/hack/
 

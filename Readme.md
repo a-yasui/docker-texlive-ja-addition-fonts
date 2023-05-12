@@ -1,6 +1,6 @@
 # a-yasui/docker-texlive-ja-addition-fonts
 
-Minimal LuaLaTeX Live image for Japanese based on debian.
+LuaLaTeX Live image for Japanese based on debian.
 
 Forked from umireon/docker-texci (under the MIT License) And https://github.com/a-yasui/docker-alpine-texlive-ja-addition-fonts (under the MIT License)
 

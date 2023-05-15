@@ -6,14 +6,14 @@ FROM --platform=$BUILDPLATFORM debian:stable
 
 MAINTAINER a-yasui
 
-ENV PATH /usr/local/texlive/2021/bin/x86_64-linux:/usr/local/texlive/2021/bin/aarch64-linux:$PATH
+ENV PATH /usr/local/texlive/2022/bin/x86_64-linux:/usr/local/texlive/2022/bin/aarch64-linux:$PATH
 ENV LANG=C.UTF-8
 
 WORKDIR /workdir
 
 ## If Stable Release: Maybe, release date will be */04/20 cycle.
-### install-tl-unx.tar.gz : http://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2021/tlnet-final/install-tl-unx.tar.gz
-### Repository : http://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2021/
+### install-tl-unx.tar.gz : http://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2022/tlnet-final/install-tl-unx.tar.gz
+### Repository : http://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2022/
 ##
 ## If you use the Major version: Use to ctan link: http://mirror.ctan.org/systems/texlive/tlnet
 ### install-tl-unx.tar.gz : http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
@@ -28,12 +28,12 @@ RUN chmod +x /tmp/mkcompile.sh \
 RUN apt-get update \
   && apt-get install -y perl wget xz-utils tar fontconfig libfreetype6 unzip \
   && apt-get -y clean \
-  && wget -qO - http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz | \
+  && wget -qO - http://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2022/tlnet-final/install-tl-unx.tar.gz | \
     tar -xz -C /tmp/install-tl-unx --strip-components=1 \
   && /tmp/install-tl-unx/install-tl \
       --no-gui \
       --profile=/tmp/install-tl-unx/texlive.profile \
-      --repository http://mirror.ctan.org/systems/texlive/tlnet/ \
+      --repository http://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2022/tlnet-final/ \
   && tlmgr install \
       collection-basic collection-latex \
       collection-latexrecommended collection-latexextra \

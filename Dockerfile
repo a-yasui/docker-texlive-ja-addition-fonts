@@ -8,7 +8,7 @@ ARG BUILDPLATFORM
 
 MAINTAINER a-yasui
 
-ENV PATH /usr/local/texlive/2022/bin/x86_64-linux:/usr/local/texlive/2022/bin/aarch64-linux:$PATH
+ENV PATH /usr/local/texlive/2023/bin/x86_64-linux:/usr/local/texlive/2023/bin/aarch64-linux:$PATH
 ENV LANG=C.UTF-8
 
 WORKDIR /workdir

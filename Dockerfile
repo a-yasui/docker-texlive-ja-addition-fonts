@@ -30,12 +30,12 @@ RUN chmod +x /tmp/mkcompile.sh \
 RUN apt update \
   && apt install -y perl wget xz-utils tar fontconfig libfreetype6 unzip \
   && apt clean -y \
-  && wget -qO - https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz | \
+  && wget -qO - https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2023/tlnet-final/install-tl-unx.tar.gz | \
     tar -xz -C /tmp/install-tl-unx --strip-components=1 \
   && /tmp/install-tl-unx/install-tl \
       --no-gui \
       --profile=/tmp/install-tl-unx/texlive.profile \
-      --repository https://mirror.ctan.org/systems/texlive/tlnet/ \
+      --repository https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2023/ \
   && tlmgr install \
       collection-basic collection-latex \
       collection-latexrecommended collection-latexextra \

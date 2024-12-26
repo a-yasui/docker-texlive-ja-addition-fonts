@@ -8,11 +8,7 @@ ARG BUILDPLATFORM
 
 LABEL org.opencontainers.image.authors="a.yasui@gmail.com"
 
-<<<<<<< HEAD
 ENV PATH=/usr/local/texlive/2024/bin/x86_64-linux:/usr/local/texlive/2024/bin/aarch64-linux:$PATH
-=======
-ENV PATH=/usr/local/texlive/2024/bin/x86_64-linux:/usr/local/texlive/2024/bin/aarch64-linux:/usr/local/texlive/2025/bin/x86_64-linux:/usr/local/texlive/2025/bin/aarch64-linux:$PATH
->>>>>>> origin/main
 ENV TZ=Asia/Tokyo
 ENV MANPATH=/usr/local/texlive/2024/texmf-dist/doc/man:$MANPATH
 ENV INFOPATH=/usr/local/texlive/2024/texmf-dist/doc/info:$INFOPATH
@@ -37,20 +33,12 @@ RUN chmod +x /tmp/mkcompile.sh \
 RUN apt update \
     && apt install -y perl wget xz-utils tar fontconfig libfreetype6 unzip \
     && apt clean -y \
-<<<<<<< HEAD
     && wget -qO - https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2024/tlnet-final/install-tl-unx.tar.gz  | \
-=======
-    && wget -qO - https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz | \
->>>>>>> origin/main
     tar -xz -C /tmp/install-tl-unx --strip-components=1 \
     && /tmp/install-tl-unx/install-tl \
     --no-gui \
     --profile=/tmp/install-tl-unx/texlive.profile \
-<<<<<<< HEAD
     --repository https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2024/  \
-=======
-    --repository https://mirror.ctan.org/systems/texlive/tlnet/ \
->>>>>>> origin/main
     && tlmgr install \
     collection-basic collection-latex \
     collection-latexrecommended collection-latexextra \

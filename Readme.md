@@ -17,6 +17,7 @@ $ docker run --rm -it -v $PWD:/workdir atyasu/docker-texlive-ja-addition-fonts l
 ## Yearly
 
 
+- 2024 : docker pull atyasu/docker-texlive-ja-addition-fonts:year-2024
 - 2023 : docker pull atyasu/docker-texlive-ja-addition-fonts:year-2023
 - 2022 : docker pull atyasu/docker-texlive-ja-addition-fonts:year-2022
 - 2021 : docker pull atyasu/docker-texlive-ja-addition-fonts:year-2021
@@ -24,7 +25,7 @@ $ docker run --rm -it -v $PWD:/workdir atyasu/docker-texlive-ja-addition-fonts l
 
 # Font
 
-- 原ノ味フォント：https://github.com/trueroad/HaranoAjiFonts 
+- 原ノ味フォント：https://github.com/trueroad/HaranoAjiFonts
 - IPA : https://moji.or.jp/ipafont/
 - Hack : https://sourcefoundry.org/hack/
 

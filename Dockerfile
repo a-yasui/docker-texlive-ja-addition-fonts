@@ -8,7 +8,10 @@ ARG BUILDPLATFORM
 
 LABEL org.opencontainers.image.authors="a.yasui@gmail.com"
 
-ENV PATH=/usr/local/texlive/2022/bin/x86_64-linux:/usr/local/texlive/2023/bin/x86_64-linux:/usr/local/texlive/2022/bin/aarch64-linux:/usr/local/texlive/2023/bin/aarch64-linux:$PATH
+ENV PATH=/usr/local/texlive/2024/bin/x86_64-linux:/usr/local/texlive/2024/bin/aarch64-linux:$PATH
+ENV TZ=Asia/Tokyo
+ENV MANPATH=/usr/local/texlive/2024/texmf-dist/doc/man:$MANPATH
+ENV INFOPATH=/usr/local/texlive/2024/texmf-dist/doc/info:$INFOPATH
 ENV LANG=C.UTF-8
 
 WORKDIR /workdir

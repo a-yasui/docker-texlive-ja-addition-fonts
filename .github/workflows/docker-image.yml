@@ -15,6 +15,7 @@ jobs:
     build:
         if: startsWith(github.ref, 'refs/heads/year-') || github.ref == 'refs/heads/main'
         runs-on: ubuntu-latest
+        timeout-minutes: 180 # 大体は3時間で終わるはず。
         steps:
             - name: Checkout code
               uses: actions/checkout@v3

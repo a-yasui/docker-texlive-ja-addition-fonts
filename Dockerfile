@@ -66,7 +66,7 @@ RUN apt-get update \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 WORKDIR "/${USER}"
-RUN rm --recursive "${INSTALL_TL_URL}"
+RUN rm --recursive "${INSTALL_TL_DIR}"
 
 USER ${USER}
 RUN fc-cache -fv

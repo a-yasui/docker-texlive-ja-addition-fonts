@@ -77,7 +77,7 @@ collection-games 0
 collection-humanities 0
 collection-langarabic 0
 collection-langchinese 0
-collection-langcjk 1
+collection-langcjk 0
 collection-langcyrillic 0
 collection-langczechslovak 0
 collection-langfrench 0

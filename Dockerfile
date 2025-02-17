@@ -62,13 +62,13 @@ RUN apt-get update \
   && /${INSTALL_TL_DIR}/install-tl.sh "${INSTALL_TL_DIR}" "${TEX_PROFILE}" "${INSTALL_TL_REPOSITORY}" \
   # Install Fonts
   && apt-get install --no-install-recommends -y unzip fontconfig \
-  && mkdir -p "/${USER}/.fonts" \
-  && unzip Hack-v3.003-ttf.zip && cp -R ttf "/${USER}/.fonts/Hackfont" && rm -rf Hack-v3.003-ttf.zip ttf \
-  && unzip IPAexfont00401.zip  && cp -R IPAexfont00401 "/${USER}/.fonts/IPA" && rm -rf IPAexfont00401.zip IPAexfont00401 \
+  && mkdir -p "/home/${USER}/.fonts" \
+  && unzip Hack-v3.003-ttf.zip && cp -R ttf "/home/${USER}/.fonts/Hackfont" && rm -rf Hack-v3.003-ttf.zip ttf \
+  && unzip IPAexfont00401.zip  && cp -R IPAexfont00401 "/home/${USER}/.fonts/IPA" && rm -rf IPAexfont00401.zip IPAexfont00401 \
   # CleanUp
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-WORKDIR "/${USER}"
+WORKDIR "/home/${USER}"
 RUN rm --recursive "${INSTALL_TL_DIR}"
 
 USER ${USER}

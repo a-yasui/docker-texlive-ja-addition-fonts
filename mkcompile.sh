@@ -46,25 +46,29 @@ option_file_assocs 0
 # Only the core ones with very few supported languages are enabled. For example,
 # just including 'collection-langjapanese' requires 800MB of space.
 # -------------------------------------------------------------------------------
+#     collection-basic collection-latex \
+#    collection-latexrecommended collection-latexextra \
+#    collection-fontsrecommended collection-langjapanese \
+#    collection-luatex latexmk \
 collection-basic 1
-collection-bibtexextra 1
-collection-binextra 1
-collection-fontsextra 1
+collection-bibtexextra 0
+collection-binextra 0
+collection-fontsextra 0
 collection-fontsrecommended 1
-collection-fontutils 1
-collection-formatsextra 1
+collection-fontutils 0
+collection-formatsextra 0
 collection-langenglish 1
-collection-langeuropean 1
-collection-langgerman 1
-collection-latex 1
+collection-langeuropean 0
+collection-langgerman 0
+collection-latex 0
 collection-latexextra 1
 collection-latexrecommended 1
 collection-luatex 1
-collection-mathscience 1
-collection-pictures 1
-collection-plaingeneric 1
-collection-publishers 1
-collection-xetex 1
+collection-mathscience 0
+collection-pictures 0
+collection-plaingeneric 0
+collection-publishers 0
+collection-xetex 0
 # -------------------------------------------------------------------------------
 # Enable the following disabled ones as needed. They are included here so
 # everyone can see what is available; as many as possible are disabled, since

@@ -45,25 +45,8 @@ WORKDIR $INSTALL_TL_DIR
 
 COPY mkcompile.sh /tmp/mkcompile.sh
 RUN chmod +x /tmp/mkcompile.sh \
-    && mkdir /tmp/install-tl-unx \
-    && /tmp/mkcompile.sh $TARGETPLATFORM \
+    && /tmp/mkcompile.sh "${TARGETPLATFORM}" "${TEX_PROFILE}" \
     && rm /tmp/mkcompile.sh
-
-RUN apt update \
-    && apt install -y perl wget xz-utils tar fontconfig libfreetype6 unzip \
-    && apt clean -y \
-    && wget -qO - https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz | \
-    tar -xz -C /tmp/install-tl-unx --strip-components=1 \
-    && /tmp/install-tl-unx/install-tl \
-    --no-gui \
-    --profile=/tmp/install-tl-unx/texlive.profile \
-    --repository https://mirror.ctan.org/systems/texlive/tlnet/ \
-    && tlmgr install \
-    collection-basic collection-latex \
-    collection-latexrecommended collection-latexextra \
-    collection-fontsrecommended collection-langjapanese \
-    collection-luatex latexmk \
-    && rm -fr /tmp/install-tl-unx
 
 ## Install Fonts
 COPY Hack-v3.003-ttf.zip IPAexfont00401.zip install-tl.sh .
@@ -82,7 +65,6 @@ RUN apt-get update \
   && mkdir -p "/${USER}/.fonts" \
   && unzip Hack-v3.003-ttf.zip && cp -R ttf "/${USER}/.fonts/Hackfont" && rm -rf Hack-v3.003-ttf.zip ttf \
   && unzip IPAexfont00401.zip  && cp -R IPAexfont00401 "/${USER}/.fonts/IPA" && rm -rf IPAexfont00401.zip IPAexfont00401 \
-
   # CleanUp
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 

@@ -6,7 +6,12 @@ FROM --platform=$TARGETPLATFORM debian:stable
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 
-ENV PATH=/usr/local/texlive/2022/bin/x86_64-linux:/usr/local/texlive/2023/bin/x86_64-linux:/usr/local/texlive/2022/bin/aarch64-linux:/usr/local/texlive/2023/bin/aarch64-linux:$PATH
+LABEL org.opencontainers.image.authors="a.yasui@gmail.com"
+
+ENV PATH=/usr/local/texlive/2024/bin/x86_64-linux:/usr/local/texlive/2024/bin/aarch64-linux:/usr/local/texlive/2025/bin/x86_64-linux:/usr/local/texlive/2025/bin/aarch64-linux:$PATH
+ENV TZ=Asia/Tokyo
+ENV MANPATH=/usr/local/texlive/2024/texmf-dist/doc/man:$MANPATH
+ENV INFOPATH=/usr/local/texlive/2024/texmf-dist/doc/info:$INFOPATH
 ENV LANG=C.UTF-8
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -40,9 +45,25 @@ WORKDIR $INSTALL_TL_DIR
 
 COPY mkcompile.sh /tmp/mkcompile.sh
 RUN chmod +x /tmp/mkcompile.sh \
-  && /tmp/mkcompile.sh "${TARGETPLATFORM}" "${TEX_PROFILE}" \
-  && rm /tmp/mkcompile.sh
+    && mkdir /tmp/install-tl-unx \
+    && /tmp/mkcompile.sh $TARGETPLATFORM \
+    && rm /tmp/mkcompile.sh
 
+RUN apt update \
+    && apt install -y perl wget xz-utils tar fontconfig libfreetype6 unzip \
+    && apt clean -y \
+    && wget -qO - https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz | \
+    tar -xz -C /tmp/install-tl-unx --strip-components=1 \
+    && /tmp/install-tl-unx/install-tl \
+    --no-gui \
+    --profile=/tmp/install-tl-unx/texlive.profile \
+    --repository https://mirror.ctan.org/systems/texlive/tlnet/ \
+    && tlmgr install \
+    collection-basic collection-latex \
+    collection-latexrecommended collection-latexextra \
+    collection-fontsrecommended collection-langjapanese \
+    collection-luatex latexmk \
+    && rm -fr /tmp/install-tl-unx
 
 ## Install Fonts
 COPY Hack-v3.003-ttf.zip IPAexfont00401.zip install-tl.sh .

@@ -10,8 +10,6 @@ LABEL org.opencontainers.image.authors="a.yasui@gmail.com"
 
 ENV PATH=/usr/local/texlive/2024/bin/x86_64-linux:/usr/local/texlive/2024/bin/aarch64-linux:/usr/local/texlive/2025/bin/x86_64-linux:/usr/local/texlive/2025/bin/aarch64-linux:$PATH
 ENV TZ=Asia/Tokyo
-ENV MANPATH=/usr/local/texlive/2024/texmf-dist/doc/man:$MANPATH
-ENV INFOPATH=/usr/local/texlive/2024/texmf-dist/doc/info:$INFOPATH
 ENV LANG=C.UTF-8
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -69,7 +67,7 @@ RUN apt-get update \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 WORKDIR "/home/${USER}"
-RUN rm --recursive "${INSTALL_TL_DIR}"
+RUN rm --recursive "${INSTALL_TL_DIR}" && mkdir "/workdir" && chown -R ${USER}:${USER} "/workdir" "/home/${USER}"
 
 USER ${USER}
 RUN fc-cache -fv

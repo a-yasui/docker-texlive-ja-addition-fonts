@@ -80,4 +80,3 @@ ln \
     "$TEXLIVE_BIN_DIR"/*
 
 check_path
-

@@ -80,7 +80,3 @@ ln \
     "$TEXLIVE_BIN_DIR"/*
 
 check_path
-
-# Copy TexMF
-
-check_path

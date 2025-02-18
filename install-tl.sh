@@ -81,3 +81,6 @@ ln \
 
 check_path
 
+# Copy TexMF
+
+check_path

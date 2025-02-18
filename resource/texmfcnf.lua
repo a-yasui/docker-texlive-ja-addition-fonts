@@ -1,0 +1,10 @@
+
+return {
+  content = {
+    variables = {
+      TEXMFHOME = "/tex_cache/texmf",
+      TEXMFVAR = "/tex_cache/.texlive/texmf-var",
+      TEXMFCONFIG = "/tex_cache/.texlive/texmf-config",
+    },
+  },
+}

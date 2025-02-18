@@ -66,11 +66,15 @@ RUN apt-get update \
   # CleanUp
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN rm --recursive "${INSTALL_TL_DIR}" && mkdir "/workdir" && chown -R ${USER}:${USER} "/workdir" "/home/${USER}"
+COPY install-mf.sh resource/texmf.cnf resource/texmfcnf.lua .
+RUN mkdir "/tex_cache" "/workdir" && \
+    chown -R ${USER}:${USER} "/workdir" "/tex_cache" "/home/${USER}" && \
+    chmod +x install-mf.sh && /${INSTALL_TL_DIR}/install-mf.sh && \
+    rm --recursive "${INSTALL_TL_DIR}"
 
 WORKDIR "/workdir"
+
 USER ${USER}
-RUN fc-cache -fv
 
 # Load font cache, has to be done on each compilation otherwise
 # ("luaotfload | db : Font names database not found, generating new one.").

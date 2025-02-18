@@ -69,7 +69,8 @@ collection-pictures 0
 collection-plaingeneric 0
 collection-publishers 0
 collection-xetex 0
-latexmk 1
+#latexmk 1
+
 # -------------------------------------------------------------------------------
 # Enable the following disabled ones as needed. They are included here so
 # everyone can see what is available; as many as possible are disabled, since

@@ -2,7 +2,7 @@
 # https://opensource.org/licenses/MIT
 #
 
-FROM --platform=$TARGETPLATFORM debian:stable
+FROM debian:stable
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 
@@ -66,9 +66,9 @@ RUN apt-get update \
   # CleanUp
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-WORKDIR "/home/${USER}"
 RUN rm --recursive "${INSTALL_TL_DIR}" && mkdir "/workdir" && chown -R ${USER}:${USER} "/workdir" "/home/${USER}"
 
+WORKDIR "/workdir"
 USER ${USER}
 RUN fc-cache -fv
 

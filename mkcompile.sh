@@ -20,7 +20,7 @@ cat <<__EOL__ > "${OUTPUT_FILE}";
 #
 # Via: https://github.com/alexpovel/latex-extras-docker/blob/master/config/texlive.profile
 #
-selected_scheme scheme-custom
+selected_scheme scheme-basic
 
 TEXMFHOME /home/\${USER}/texmf
 TEXMFVAR /home/\${USER}/.texlive/texmf-var
@@ -69,6 +69,7 @@ collection-pictures 0
 collection-plaingeneric 0
 collection-publishers 0
 collection-xetex 0
+latexmk 1
 # -------------------------------------------------------------------------------
 # Enable the following disabled ones as needed. They are included here so
 # everyone can see what is available; as many as possible are disabled, since

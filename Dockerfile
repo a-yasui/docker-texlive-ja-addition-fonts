@@ -18,7 +18,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # Install And Build The TexLive
 ARG INSTALL_TL_DIR="/install"
 ARG INSTALL_TL_URL="https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2024/tlnet-final/install-tl-unx.tar.gz"
-ARG INSTALL_TL_REPOSITORY="https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2024/"
+ARG INSTALL_TL_REPOSITORY="https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2024/tlnet-final/"
 ARG TEX_PROFILE="${INSTALL_TL_DIR}/texlive.profile"
 
 LABEL maintainer="a.yasui@gmail.com" \

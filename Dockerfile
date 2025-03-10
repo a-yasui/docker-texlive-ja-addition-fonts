@@ -24,7 +24,7 @@ ARG TEX_PROFILE="${INSTALL_TL_DIR}/texlive.profile"
 LABEL maintainer="a.yasui@gmail.com" \
       org.opencontainers.image.title="TexliveJaAdditionFonts" \
       org.opencontainers.image.description="LuaLaTeX Live image for Japanese based on debian." \
-      org.opencontainers.image.version="latest" \
+      org.opencontainers.image.version="year-2024" \
       org.opencontainers.image.source="https://github.com/a-yasui/docker-texlive-ja-addition-fonts" \
       org.opencontainers.image.licenses="MIT"
 

@@ -7,6 +7,8 @@ Forked from umireon/docker-texci (under the MIT License) And https://github.com/
 [![dockeri.co](https://dockeri.co/image/atyasu/docker-texlive-ja-addition-fonts)](https://hub.docker.com/r/atyasu/docker-texlive-ja-addition-fonts)
 
 
+
+
 # Usage
 
 ```shell
@@ -15,7 +17,6 @@ $ docker run --rm -it -v $PWD:/workdir atyasu/docker-texlive-ja-addition-fonts l
 ```
 
 ## Yearly
-
 
 - 2024 : docker pull atyasu/docker-texlive-ja-addition-fonts:year-2024
 - 2023 : docker pull atyasu/docker-texlive-ja-addition-fonts:year-2023
@@ -35,6 +36,36 @@ $ docker run --rm -it -v $PWD:/workdir atyasu/docker-texlive-ja-addition-fonts l
 cd sample;
 make all;
 ```
+
+## 他の DockerImage に取り込む
+
+ディスク容量はまぁまぁしんどい物だけど、他の環境に移す時はこんな感じで使えば動きました。
+
+```Dockerfile
+FROM atyasu/docker-texlive-ja-addition-fonts:latest AS lualatex
+
+FROM debian:stable
+ARG TARGETPLATFORM
+ARG BUILDPLATFORM
+
+ARG USER="workuser"
+
+RUN useradd --create-home ${USER}
+RUN mkdir "/workdir" &&  mkdir "/home/${USER}/bin"
+
+COPY --from=lualatex /usr/local/texlive /usr/local/texlive
+COPY --from=lualatex /workdir /workdir
+
+WORKDIR "/home/${USER}"
+
+RUN ln --symbolic --verbose --target-directory="bin" "$(find / -type d -regextype grep -regex '.*/texlive/[0-9]\{4\}/bin/.*' -print -quit)/"*
+
+USER ${USER}
+ENV PATH="/home/${USER}/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
+
+CMD ["sh"]
+```
+
 
 ## References
 

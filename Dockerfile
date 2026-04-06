@@ -8,7 +8,7 @@ ARG BUILDPLATFORM
 
 LABEL org.opencontainers.image.authors="a.yasui@gmail.com"
 
-ENV PATH=/usr/local/texlive/2024/bin/x86_64-linux:/usr/local/texlive/2024/bin/aarch64-linux:/usr/local/texlive/2025/bin/x86_64-linux:/usr/local/texlive/2025/bin/aarch64-linux:$PATH
+ENV PATH=/usr/local/texlive/2025/bin/x86_64-linux:/usr/local/texlive/2025/bin/aarch64-linux:$PATH
 ENV TZ=Asia/Tokyo
 ENV LANG=C.UTF-8
 
@@ -24,7 +24,7 @@ ARG TEX_PROFILE="${INSTALL_TL_DIR}/texlive.profile"
 LABEL maintainer="a.yasui@gmail.com" \
       org.opencontainers.image.title="TexliveJaAdditionFonts" \
       org.opencontainers.image.description="LuaLaTeX Live image for Japanese based on debian." \
-      org.opencontainers.image.version="latest" \
+      org.opencontainers.image.version="year-2025" \
       org.opencontainers.image.source="https://github.com/a-yasui/docker-texlive-ja-addition-fonts" \
       org.opencontainers.image.licenses="MIT"
 
